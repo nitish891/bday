@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Maanya M | A Grand Luxury Tribute</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons & GSAP for animations -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#fdf8e6',
+                            200: '#f9ebb3',
+                            300: '#f3d97d',
+                            400: '#e7bf47',
+                            500: '#d4af37',
+                            600: '#aa8625',
+                            700: '#806018',
+                            800: '#583f0f',
+                            900: '#332306',
+                        },
+                        obsidian: '#08080a',
+                        noir: '#0e0e12',
+                        charcoal: '#15151c'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        cormorant: ['Cormorant Garamond', 'serif']
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 35px -5px rgba(212, 175, 55, 0.3)',
+                        'gold-glow-lg': '0 0 65px 5px rgba(212, 175, 55, 0.45)',
+                        'inner-gold': 'inset 0 0 20px rgba(212, 175, 55, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #08080a; }
+        ::-webkit-scrollbar-thumb { background: #2a2518; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #fff3d1 0%, #d4af37 50%, #aa8625 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gold-shimmer {
+            background: linear-gradient(90deg, #aa8625 0%, #fff7d6 25%, #d4af37 50%, #fff7d6 75%, #aa8625 100%);
+            background-size: 200% auto;
+            color: #000;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .glass-luxury {
+            background: rgba(18, 18, 24, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        @keyframes flame-flicker {
+            0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.95; filter: drop-shadow(0 0 12px rgba(255, 180, 50, 0.9)); }
+            50% { transform: scale(1.12) rotate(1.5deg); opacity: 1; filter: drop-shadow(0 0 20px rgba(255, 200, 70, 1)); }
+        }
+
+        .flame-active { animation: flame-flicker 1.4s infinite ease-in-out; }
+
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .animate-float { animation: float-slow 5s ease-in-out infinite; }
+
+        .card-glare {
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 245, 200, 0.25) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Screen Shake Keyframes for Jumpscare */
+        @keyframes shock-shake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-12px, 12px) rotate(-2.5deg); }
+            20% { transform: translate(14px, -10px) rotate(2.5deg); }
+            30% { transform: translate(-16px, 14px) rotate(-1.5deg); }
+            40% { transform: translate(12px, -12px) rotate(2deg); }
+            50% { transform: translate(-10px, 8px) rotate(-1deg); }
+            60% { transform: translate(8px, -6px) rotate(0.5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        .animate-shake { animation: shock-shake 0.65s ease-in-out; }
+    </style>
+</head>
+<body id="appBody" class="bg-obsidian text-stone-200 font-sans selection:bg-gold-500 selection:text-black overflow-x-hidden">
+
+    <!-- Flash Overlay for Jumpscare Effect -->
+    <div id="flashOverlay" class="fixed inset-0 bg-white pointer-events-none z-50 opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Interactive Gold Starburst Canvas -->
+    <canvas id="cursorCanvas" class="fixed inset-0 pointer-events-none z-40"></canvas>
+
+    <!-- Ambient Golden Aurora Mesh Canvas -->
+    <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-60"></canvas>
+
+    <!-- Background Grid Lines -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-10 bg-[linear-gradient(to_right,#d4af3710_1px,transparent_1px),linear-gradient(to_bottom,#d4af3710_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+
+    <!-- AUDIO & MUSIC CONTROLS -->
+    <div class="fixed top-6 right-6 z-50 flex items-center space-x-3">
+        <button id="musicBoxBtn" class="glass-luxury px-4 py-2.5 rounded-full text-gold-300 hover:text-white hover:border-gold-400 transition-all duration-300 shadow-gold-glow flex items-center gap-2 group">
+            <i data-lucide="disc" id="musicIcon" class="w-4 h-4 text-gold-400 transition-transform group-hover:rotate-180 duration-700"></i>
+            <span id="musicText" class="text-xs uppercase tracking-widest font-medium">Music Box: Off</span>
+        </button>
+        <button id="sparkleTrigger" class="glass-luxury p-3 rounded-full text-gold-400 hover:text-white hover:border-gold-400 transition-all duration-300 shadow-gold-glow group">
+            <i data-lucide="sparkles" class="w-5 h-5 transition-transform group-hover:scale-125"></i>
+        </button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10">
+
+        <!-- HERO SECTION -->
+        <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden py-20">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+            <div class="inline-flex items-center space-x-3 mb-6 px-5 py-2 rounded-full border border-gold-500/30 bg-gold-900/20 text-gold-300 text-xs tracking-[0.3em] uppercase font-light animate-float">
+                <i data-lucide="crown" class="w-4 h-4 text-gold-400"></i>
+                <span>A Royal Celebration</span>
+                <i data-lucide="crown" class="w-4 h-4 text-gold-400"></i>
+            </div>
+
+            <h1 class="text-4xl sm:text-7xl md:text-8xl font-serif font-normal tracking-tight text-white mb-4 leading-none">
+                Happy Birthday
+            </h1>
+            
+            <div class="relative inline-block mb-8">
+                <h2 class="text-6xl sm:text-8xl md:text-[10rem] font-serif italic text-gold-shimmer font-bold tracking-tight">
+                    Maanya M
+                </h2>
+                <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-gold-500 to-transparent mt-2"></div>
+            </div>
+
+            <p class="max-w-xl text-stone-400 font-cormorant text-xl md:text-2xl italic font-light leading-relaxed mb-10 px-4">
+                "To an extraordinary soul who moves through life with poise, radiance, and timeless beauty. May your day be as majestic as you are."
+            </p>
+
+            <div class="flex flex-wrap justify-center items-center gap-4">
+                <a href="#special-vault-section" class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full glass-luxury text-gold-300 border border-gold-500/40 hover:border-gold-400 text-xs tracking-widest uppercase transition-all duration-500 hover:shadow-gold-glow">
+                    <i data-lucide="lock" class="w-4 h-4 text-gold-400 animate-pulse"></i>
+                    <span>Open Secret VIP Vault</span>
+                </a>
+
+                <a href="#cake-section" class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full glass-luxury text-gold-300 border border-gold-500/40 hover:border-gold-400 text-xs tracking-widest uppercase transition-all duration-500 hover:shadow-gold-glow">
+                    <span>Blow The Candles</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4 text-gold-400 transition-transform duration-300 group-hover:translate-y-1"></i>
+                </a>
+                
+                <button id="champagneBtn" class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-gold-600 to-gold-400 text-obsidian font-bold text-xs tracking-widest uppercase hover:from-gold-500 hover:to-gold-300 transition-all duration-300 shadow-gold-glow">
+                    <i data-lucide="wine" class="w-4 h-4"></i>
+                    <span>Pop Champagne 🍾</span>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- SECRET VIP MYSTERY VAULT (PURE SURPRISE JUMPSCARE - NO VISHRUT MENTION BEFORE CLICK) -->
+        <section id="special-vault-section" class="py-24 px-4 max-w-5xl mx-auto border-t border-gold-500/20 relative">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-400/50 bg-gold-900/40 text-gold-300 text-[11px] tracking-[0.25em] uppercase font-medium mb-3 shadow-gold-glow">
+                    <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-gold-400"></i>
+                    <span>Top Secret • Encrypted Vault</span>
+                </div>
+                <h3 class="text-4xl md:text-6xl font-serif text-white">The VIP Mystery Vault</h3>
+                <p class="text-stone-400 font-light text-sm mt-3 max-w-lg mx-auto">
+                    An exclusive mystery payload has been prepared for you. Tap the button below to break the seal and reveal its contents.
+                </p>
+            </div>
+
+            <!-- Vault Box Wrapper -->
+            <div id="vkVaultCard" class="glass-luxury p-8 md:p-14 rounded-3xl border-2 border-gold-400/50 relative overflow-hidden transition-all duration-700 shadow-gold-glow-lg mb-12">
+                
+                <!-- Locked State (Generic - zero hint of Vishrut) -->
+                <div id="vkSealedState" class="flex flex-col items-center justify-center py-8 text-center relative z-10">
+                    <div id="vkLockIcon" class="w-24 h-24 rounded-full bg-gradient-to-br from-gold-300 via-gold-500 to-gold-800 p-1 shadow-gold-glow-lg mb-6 flex items-center justify-center animate-bounce">
+                        <div class="w-full h-full bg-obsidian rounded-full flex items-center justify-center border border-gold-300/60">
+                            <i data-lucide="lock" class="w-10 h-10 text-gold-300"></i>
+                        </div>
+                    </div>
+
+                    <h4 class="text-2xl font-serif text-white mb-2">Locked Mystery Message</h4>
+                    <p class="text-stone-400 text-sm mb-6 max-w-md">Contains an encrypted personal message. Tap below when ready to open!</p>
+
+                    <button id="vkTriggerJumpscareBtn" class="px-8 py-4 rounded-full bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 text-obsidian font-bold text-xs uppercase tracking-[0.2em] shadow-gold-glow-lg hover:scale-105 transition-all">
+                        🔓 UNLOCK MYSTERY VAULT
+                    </button>
+                </div>
+
+                <!-- Jumpscare Graphic Popout Banner (Appears only on click) -->
+                <div id="vkJumpscareBanner" class="hidden flex-col items-center justify-center py-6 text-center transform scale-50 opacity-0 transition-all duration-500">
+                    <div class="w-28 h-28 rounded-full bg-gradient-to-tr from-gold-400 to-amber-200 p-2 shadow-gold-glow-lg mb-4 animate-spin" style="animation-duration: 8s;">
+                        <div class="w-full h-full bg-obsidian rounded-full flex items-center justify-center">
+                            <i data-lucide="crown" class="w-14 h-14 text-gold-400"></i>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-6xl font-serif font-bold text-gold-shimmer mb-2 tracking-tight">
+                        🎉 SURPRISE!! 👑
+                    </h2>
+                    <p class="text-xl md:text-3xl font-serif italic text-white mb-6">
+                        Happy Birthday Maanya! <br>
+                        <span class="text-gold-400 font-sans text-base tracking-widest uppercase block mt-2">— From your absolute favorite, Vishrut Kote!</span>
+                    </p>
+                </div>
+
+                <!-- Unsealed Letter & Audio Message from Vishrut Kote -->
+                <div id="vkUnsealedLetter" class="hidden opacity-0 transition-opacity duration-1000 text-left space-y-6 pt-4 border-t border-gold-500/30">
+                    <div class="flex justify-between items-center pb-2">
+                        <div>
+                            <span class="font-serif italic text-gold-200 text-3xl block">Dearest Maanya,</span>
+                            <span class="text-xs text-gold-400/80 uppercase tracking-widest">From Vishrut Kote • Your Favorite</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-full border border-gold-400/50 flex items-center justify-center bg-gold-900/30 text-gold-400 font-serif italic text-xl shadow-gold-glow">
+                            VK
+                        </div>
+                    </div>
+
+                    <p class="font-cormorant text-2xl text-stone-200 leading-relaxed italic">
+                        "Happy Birthday to the one who effortlessly turns ordinary days into extraordinary memories. Being your favorite is a title I wear with pride, and today is all about celebrating the brilliant, unmatched person you are!"
+                    </p>
+
+                    <p class="font-cormorant text-2xl text-stone-200 leading-relaxed italic">
+                        "May this year bring you boundless happiness, thrilling adventures, and every bit of success you deserve. Keep shining like the gold you are."
+                    </p>
+
+                    <!-- Voice Note Simulator -->
+                    <div class="mt-8 pt-6 border-t border-gold-500/20 glass-luxury p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-4 w-full sm:w-auto">
+                            <button id="vkAudioPlayBtn" class="w-12 h-12 rounded-full bg-gold-500 text-obsidian flex items-center justify-center hover:scale-105 transition-transform shadow-gold-glow flex-shrink-0">
+                                <i data-lucide="play" id="vkPlayIcon" class="w-5 h-5 fill-obsidian ml-0.5"></i>
+                            </button>
+                            <div>
+                                <h5 class="text-sm font-semibold text-white">Audio Note from Vishrut</h5>
+                                <p class="text-xs text-stone-400" id="vkAudioStatus">Tap play to listen to audio melody</p>
+                            </div>
+                        </div>
+
+                        <!-- Equalizer Visualizer Bars -->
+                        <div class="flex items-center gap-1.5 h-8 px-4" id="vkEqBars">
+                            <div class="w-1 bg-gold-400/40 rounded-full h-3 transition-all duration-300"></div>
+                            <div class="w-1 bg-gold-400/40 rounded-full h-6 transition-all duration-300"></div>
+                            <div class="w-1 bg-gold-400/40 rounded-full h-4 transition-all duration-300"></div>
+                            <div class="w-1 bg-gold-400/40 rounded-full h-7 transition-all duration-300"></div>
+                            <div class="w-1 bg-gold-400/40 rounded-full h-2 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-4">
+                        <span class="text-xs font-serif italic text-gold-400">— Forever Yours, Vishrut Kote</span>
+                        <button id="vkReTriggerBtn" class="text-xs text-stone-500 hover:text-gold-400 tracking-widest uppercase underline">Re-trigger Surprise ⚡</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 3D INTERACTIVE CAKE & CANDLE SECTION -->
+        <section id="cake-section" class="py-24 px-4 max-w-5xl mx-auto text-center border-t border-gold-500/10 relative">
+            <div class="mb-12">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-400/40 bg-gold-900/30 text-gold-300 text-[11px] tracking-[0.25em] uppercase font-medium mb-3 shadow-gold-glow">
+                    <i data-lucide="mic" class="w-3.5 h-3.5 text-gold-400 animate-pulse"></i>
+                    <span>Real Microphone Blow Enabled</span>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif text-white mt-2">The Royal Birthday Tier</h3>
+                <p class="text-stone-400 font-light text-sm mt-3 max-w-md mx-auto">
+                    Blow into your device microphone (or click the flame below) to extinguish the royal candle and unlock your birthday wish!
+                </p>
+            </div>
+
+            <div class="relative py-12 flex flex-col items-center justify-center min-h-[460px]">
+                
+                <div class="relative group cursor-pointer select-none flex flex-col items-center" id="cakeWrapper">
+                    
+                    <!-- Realtime Procedural Flame & Volumetric Smoke Canvas -->
+                    <div class="relative flex flex-col items-center justify-center -mb-2 z-30">
+                        <canvas id="flameCanvas" class="w-48 h-48 -mb-16 pointer-events-none"></canvas>
+                    </div>
+
+                    <!-- Candle -->
+                    <div class="w-6 h-28 bg-gradient-to-b from-gold-200 via-gold-400 to-gold-600 rounded-t-md mx-auto border-x border-gold-300/40 relative z-20 shadow-inner flex flex-col justify-between py-2 items-center">
+                        <div class="w-full h-1 bg-gold-900/40"></div>
+                        <div class="w-full h-1 bg-gold-900/40"></div>
+                        <div class="w-full h-1 bg-gold-900/40"></div>
+                    </div>
+
+                    <!-- Cake Tier 1 -->
+                    <div class="w-48 h-20 glass-luxury rounded-t-3xl mx-auto border-t-2 border-gold-400/60 shadow-gold-glow flex items-center justify-center relative z-10 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-b from-gold-500/10 to-transparent"></div>
+                        <span class="font-serif italic text-gold-300 text-lg relative z-10">Maanya</span>
+                    </div>
+
+                    <!-- Cake Tier 2 -->
+                    <div class="w-64 h-24 bg-gradient-to-b from-noir to-charcoal rounded-t-2xl mx-auto border-t-2 border-gold-500/40 shadow-2xl relative z-0 flex items-center justify-around px-6">
+                        <div class="w-3 h-3 rounded-full bg-gold-400/40 animate-pulse"></div>
+                        <div class="w-3 h-3 rounded-full bg-gold-400/60 animate-pulse"></div>
+                        <div class="w-3 h-3 rounded-full bg-gold-400/40 animate-pulse"></div>
+                    </div>
+
+                    <!-- Base Stand -->
+                    <div class="w-80 h-8 bg-gradient-to-r from-gold-700 via-gold-400 to-gold-700 rounded-xl shadow-gold-glow-lg mx-auto border border-gold-300/40 -mt-1 flex items-center justify-center">
+                        <div class="w-72 h-1 bg-gold-200/50"></div>
+                    </div>
+                </div>
+
+                <!-- Mic Indicator & Blow Control Buttons -->
+                <div class="mt-8 flex flex-wrap justify-center items-center gap-4">
+                    <button id="enableMicBtn" class="px-6 py-2.5 rounded-full glass-luxury border border-gold-500/40 text-gold-300 hover:text-white text-xs uppercase tracking-widest transition-all hover:shadow-gold-glow flex items-center gap-2">
+                        <i data-lucide="mic" class="w-4 h-4 text-gold-400"></i>
+                        <span id="micBtnText">Enable Mic Blow 🎙️</span>
+                    </button>
+                    
+                    <button id="blowCandleBtn" class="px-6 py-2.5 rounded-full bg-gold-900/40 border border-gold-500/30 text-stone-300 hover:text-white text-xs uppercase tracking-widest transition-all hover:shadow-gold-glow">
+                        💨 Click To Blow (Fallback)
+                    </button>
+                </div>
+
+                <!-- Mic Volume Sensitivity Bar -->
+                <div id="micMeterWrapper" class="hidden mt-4 w-64 h-2 glass-luxury rounded-full overflow-hidden border border-gold-500/30">
+                    <div id="micMeterFill" class="h-full bg-gradient-to-r from-gold-600 via-gold-400 to-white w-0 transition-all duration-75"></div>
+                </div>
+
+                <div id="wishMessage" class="hidden opacity-0 transition-all duration-1000 mt-10 max-w-lg p-8 glass-luxury rounded-3xl border border-gold-500/50 shadow-gold-glow-lg">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-gold-400 mx-auto mb-3"></i>
+                    <h4 class="text-3xl font-serif text-gold-200">Your Wish Has Been Granted</h4>
+                    <p class="text-stone-300 font-cormorant text-xl italic mt-3 leading-relaxed">
+                        "May the universe align in your favor, bringing you continuous joy, grand success, and unforgettable moments of magic throughout your year."
+                    </p>
+                    <button id="reigniteBtn" class="mt-6 text-xs tracking-widest uppercase text-gold-400 hover:text-white underline underline-offset-4 transition-colors">
+                        Re-ignite Flame ✨
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3D TILT MEMORY TILES -->
+        <section class="py-24 px-4 max-w-6xl mx-auto border-t border-gold-500/10">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] text-gold-400 font-medium">Attributes of Grace</span>
+                <h3 class="text-3xl md:text-5xl font-serif text-white mt-2">Interactive Memory Tiles</h3>
+                <p class="text-stone-400 font-light text-sm mt-2">Hover to tilt in 3D • Click card to flip and read hidden note</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tile 1 -->
+                <div class="perspective-1000 group cursor-pointer tilt-card relative" onclick="flipCard(this)">
+                    <div class="relative w-full h-80 rounded-2xl transition-all duration-700 transform-style-3d card-inner">
+                        <div class="absolute inset-0 glass-luxury p-8 rounded-2xl border border-gold-500/30 backface-hidden flex flex-col justify-between shadow-lg overflow-hidden">
+                            <div class="card-glare absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="w-12 h-12 rounded-full bg-gold-900/30 border border-gold-500/30 flex items-center justify-center text-gold-400">
+                                <i data-lucide="sparkle" class="w-6 h-6 animate-pulse"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-serif text-white mb-2">Radiant Charm</h4>
+                                <p class="text-stone-400 text-xs font-light">Your presence naturally warms and illuminates every room.</p>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-400">Click to Flip ↺</span>
+                        </div>
+                        <div class="absolute inset-0 glass-luxury p-8 rounded-2xl border-2 border-gold-400/60 rotate-y-180 backface-hidden flex flex-col justify-center text-center shadow-gold-glow bg-noir">
+                            <i data-lucide="quote" class="w-6 h-6 text-gold-400 mx-auto mb-3"></i>
+                            <p class="font-cormorant text-lg italic text-stone-200">"Maanya, your elegance isn't just how you look, but how you treat others around you."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tile 2 -->
+                <div class="perspective-1000 group cursor-pointer tilt-card relative" onclick="flipCard(this)">
+                    <div class="relative w-full h-80 rounded-2xl transition-all duration-700 transform-style-3d card-inner">
+                        <div class="absolute inset-0 glass-luxury p-8 rounded-2xl border border-gold-500/30 backface-hidden flex flex-col justify-between shadow-lg overflow-hidden">
+                            <div class="card-glare absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="w-12 h-12 rounded-full bg-gold-900/30 border border-gold-500/30 flex items-center justify-center text-gold-400">
+                                <i data-lucide="heart" class="w-6 h-6 animate-pulse"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-serif text-white mb-2">Golden Heart</h4>
+                                <p class="text-stone-400 text-xs font-light">A rare blend of genuine kindness, intelligence, and humor.</p>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-400">Click to Flip ↺</span>
+                        </div>
+                        <div class="absolute inset-0 glass-luxury p-8 rounded-2xl border-2 border-gold-400/60 rotate-y-180 backface-hidden flex flex-col justify-center text-center shadow-gold-glow bg-noir">
+                            <i data-lucide="quote" class="w-6 h-6 text-gold-400 mx-auto mb-3"></i>
+                            <p class="font-cormorant text-lg italic text-stone-200">"May your kindness return to you multiplied ten times over in this new chapter."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tile 3 -->
+                <div class="perspective-1000 group cursor-pointer tilt-card relative" onclick="flipCard(this)">
+                    <div class="relative w-full h-80 rounded-2xl transition-all duration-700 transform-style-3d card-inner">
+                        <div class="absolute inset-0 glass-luxury p-8 rounded-2xl border border-gold-500/30 backface-hidden flex flex-col justify-between shadow-lg overflow-hidden">
+                            <div class="card-glare absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="w-12 h-12 rounded-full bg-gold-900/30 border border-gold-500/30 flex items-center justify-center text-gold-400">
+                                <i data-lucide="star" class="w-6 h-6 animate-pulse"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-serif text-white mb-2">Unbounded Potential</h4>
+                                <p class="text-stone-400 text-xs font-light">Ready to conquer every dream with style and determination.</p>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-400">Click to Flip ↺</span>
+                        </div>
+                        <div class="absolute inset-0 glass-luxury p-8 rounded-2xl border-2 border-gold-400/60 rotate-y-180 backface-hidden flex flex-col justify-center text-center shadow-gold-glow bg-noir">
+                            <i data-lucide="quote" class="w-6 h-6 text-gold-400 mx-auto mb-3"></i>
+                            <p class="font-cormorant text-lg italic text-stone-200">"The sky isn't your limit; it is simply your starting line. Shine bright, Maanya!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="py-16 text-center border-t border-gold-500/10">
+            <h2 class="text-3xl md:text-5xl font-serif text-white tracking-wide">
+                Happy Birthday, <span class="text-gold-gradient font-bold">Maanya M</span>
+            </h2>
+            <p class="text-stone-500 text-xs tracking-widest uppercase mt-4">
+                Designed & Synthesized Exclusively For You
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        lucide.createIcons();
+
+        /* --- CURSOR STARBURST CANVAS --- */
+        const cursorCanvas = document.getElementById('cursorCanvas');
+        const cCtx = cursorCanvas.getContext('2d');
+        let cursorParticles = [];
+        
+        function resizeCursorCanvas() {
+            cursorCanvas.width = window.innerWidth;
+            cursorCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCursorCanvas);
+        resizeCursorCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            for (let i = 0; i < 2; i++) {
+                cursorParticles.push({
+                    x: e.clientX,
+                    y: e.clientY,
+                    size: Math.random() * 3 + 1,
+                    vx: (Math.random() - 0.5) * 1.5,
+                    vy: (Math.random() - 0.5) * 1.5 - 0.5,
+                    alpha: 1,
+                    color: Math.random() > 0.5 ? '#d4af37' : '#fff7d6'
+                });
+            }
+        });
+
+        function animateCursorParticles() {
+            cCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+            cursorParticles.forEach((p, idx) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.02;
+                p.size *= 0.96;
+
+                cCtx.beginPath();
+                cCtx.arc(p.x, p.y, Math.max(p.size, 0), 0, Math.PI * 2);
+                cCtx.fillStyle = p.color;
+                cCtx.globalAlpha = Math.max(p.alpha, 0);
+                cCtx.shadowBlur = 8;
+                cCtx.shadowColor = p.color;
+                cCtx.fill();
+
+                if (p.alpha <= 0) cursorParticles.splice(idx, 1);
+            });
+            cCtx.globalAlpha = 1;
+            requestAnimationFrame(animateCursorParticles);
+        }
+        animateCursorParticles();
+
+        /* --- AMBIENT PARTICLES --- */
+        const canvas = document.getElementById('ambientCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedY = -(Math.random() * 0.4 + 0.1);
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.6 + 0.2;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) { this.reset(); this.y = height + 10; }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = '#d4af37';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < Math.floor((width * height) / 12000); i++) {
+                particles.push(new Particle());
+            }
+        }
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles();
+        animateParticles();
+
+
+        /* --- AUDIO SYNTHESIZER --- */
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let musicInterval = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playChime(freq = 554.37, delay = 0) {
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime + delay;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now);
+
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.exponentialRampToValueAtTime(0.2, now + 0.04);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.5);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 1.6);
+            } catch(e){}
+        }
+
+        // Cork Pop sound effect synthesizer
+        function playCorkPop() {
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(120, now);
+                osc.frequency.exponentialRampToValueAtTime(450, now + 0.05);
+
+                gain.gain.setValueAtTime(0.5, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.09);
+            } catch(e){}
+        }
+
+        // Deep Bass Drop + High Sting for Jumpscare
+        function playJumpscareSound() {
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+
+                // Bass Drop
+                const bassOsc = ctx.createOscillator();
+                const bassGain = ctx.createGain();
+                bassOsc.type = 'sawtooth';
+                bassOsc.frequency.setValueAtTime(280, now);
+                bassOsc.frequency.exponentialRampToValueAtTime(35, now + 0.65);
+                bassGain.gain.setValueAtTime(0.7, now);
+                bassGain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+                bassOsc.connect(bassGain);
+                bassGain.connect(ctx.destination);
+                bassOsc.start(now);
+                bassOsc.stop(now + 0.7);
+
+                // High Chime Blast Sequence after drop
+                setTimeout(() => {
+                    playChime(1046.50, 0);
+                    playChime(1318.51, 0.1);
+                    playChime(1567.98, 0.2);
+                }, 200);
+
+            } catch(e){}
+        }
+
+        // Background Music Synth
+        const musicBoxBtn = document.getElementById('musicBoxBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicText = document.getElementById('musicText');
+        const sparkleTrigger = document.getElementById('sparkleTrigger');
+        const champagneBtn = document.getElementById('champagneBtn');
+
+        musicBoxBtn.addEventListener('click', () => {
+            getAudioContext();
+            if (!isMusicPlaying) {
+                isMusicPlaying = true;
+                musicText.innerText = "Music Box: On";
+                musicIcon.classList.add('animate-spin');
+
+                let notes = [440, 554.37, 659.25, 880, 659.25, 554.37];
+                let noteIdx = 0;
+
+                musicInterval = setInterval(() => {
+                    playChime(notes[noteIdx % notes.length], 0);
+                    noteIdx++;
+                }, 450);
+            } else {
+                isMusicPlaying = false;
+                musicText.innerText = "Music Box: Off";
+                musicIcon.classList.remove('animate-spin');
+                clearInterval(musicInterval);
+            }
+        });
+
+        sparkleTrigger.addEventListener('click', () => {
+            playChime(880, 0);
+            playChime(1046.50, 0.1);
+            if (typeof confetti === 'function') confetti({ particleCount: 50, spread: 60, origin: { y: 0.2 } });
+        });
+
+        champagneBtn.addEventListener('click', () => {
+            playCorkPop();
+            setTimeout(() => {
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 120,
+                        spread: 90,
+                        origin: { y: 0.7 },
+                        colors: ['#d4af37', '#fff7d6', '#e7bf47']
+                    });
+                }
+            }, 50);
+        });
+
+        /* --- VISHRUT KOTE JUMPSCARE REVEAL LOGIC --- */
+        const vkTriggerJumpscareBtn = document.getElementById('vkTriggerJumpscareBtn');
+        const vkSealedState = document.getElementById('vkSealedState');
+        const vkJumpscareBanner = document.getElementById('vkJumpscareBanner');
+        const vkUnsealedLetter = document.getElementById('vkUnsealedLetter');
+        const flashOverlay = document.getElementById('flashOverlay');
+        const appBody = document.getElementById('appBody');
+        const vkReTriggerBtn = document.getElementById('vkReTriggerBtn');
+        const vkAudioPlayBtn = document.getElementById('vkAudioPlayBtn');
+        const vkPlayIcon = document.getElementById('vkPlayIcon');
+        const vkAudioStatus = document.getElementById('vkAudioStatus');
+        const vkEqBars = document.getElementById('vkEqBars').children;
+        let isVkAudioPlaying = false;
+        let vkAudioInterval = null;
+
+        function triggerJumpscareSequence() {
+            // 1. Play Sound Shock
+            playJumpscareSound();
+
+            // 2. Screen Flash & Shake
+            flashOverlay.style.opacity = '0.95';
+            appBody.classList.add('animate-shake');
+
+            setTimeout(() => {
+                flashOverlay.style.opacity = '0';
+            }, 250);
+
+            setTimeout(() => {
+                appBody.classList.remove('animate-shake');
+            }, 650);
+
+            // 3. Launch Gold Confetti Burst
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 160,
+                    spread: 110,
+                    origin: { y: 0.5 },
+                    colors: ['#d4af37', '#fff7d6', '#ffffff']
+                });
+            }
+
+            // 4. Transform Vault UI & Reveal Vishrut Kote
+            vkSealedState.classList.add('hidden');
+            vkJumpscareBanner.classList.remove('hidden');
+
+            if (typeof gsap !== 'undefined') {
+                gsap.to(vkJumpscareBanner, {
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                });
+            } else {
+                vkJumpscareBanner.classList.remove('scale-50', 'opacity-0');
+            }
+
+            setTimeout(() => {
+                vkUnsealedLetter.classList.remove('hidden');
+                setTimeout(() => {
+                    vkUnsealedLetter.classList.remove('opacity-0');
+                    vkUnsealedLetter.classList.add('opacity-100');
+                }, 50);
+            }, 600);
+        }
+
+        vkTriggerJumpscareBtn.addEventListener('click', triggerJumpscareSequence);
+
+        vkReTriggerBtn.addEventListener('click', () => {
+            if (isVkAudioPlaying) vkAudioPlayBtn.click();
+            vkUnsealedLetter.classList.add('opacity-0');
+            setTimeout(() => {
+                vkUnsealedLetter.classList.add('hidden');
+                vkJumpscareBanner.classList.add('hidden');
+                vkJumpscareBanner.style.transform = 'scale(0.5)';
+                vkJumpscareBanner.style.opacity = '0';
+                vkSealedState.classList.remove('hidden');
+            }, 400);
+        });
+
+        // Voice Note Player Simulation
+        vkAudioPlayBtn.addEventListener('click', () => {
+            getAudioContext();
+            if (!isVkAudioPlaying) {
+                isVkAudioPlaying = true;
+                vkPlayIcon.setAttribute('data-lucide', 'pause');
+                lucide.createIcons();
+                vkAudioStatus.innerText = "Playing audio chord sequence...";
+                
+                let notes = [523.25, 659.25, 783.99, 1046.50];
+                let noteIndex = 0;
+                
+                vkAudioInterval = setInterval(() => {
+                    playChime(notes[noteIndex % notes.length], 0);
+                    noteIndex++;
+
+                    Array.from(vkEqBars).forEach(bar => {
+                        const h = Math.floor(Math.random() * 20) + 6;
+                        bar.style.height = `${h}px`;
+                        bar.classList.add('bg-gold-400');
+                    });
+                }, 300);
+
+            } else {
+                isVkAudioPlaying = false;
+                clearInterval(vkAudioInterval);
+                vkPlayIcon.setAttribute('data-lucide', 'play');
+                lucide.createIcons();
+                vkAudioStatus.innerText = "Tap play to listen to audio melody";
+                
+                Array.from(vkEqBars).forEach(bar => {
+                    bar.style.height = '12px';
+                    bar.classList.remove('bg-gold-400');
+                });
+            }
+        });
+
+
+        /* --- HYPER-REALISTIC PROCEDURAL FLAME & VOLUMETRIC SMOKE ENGINE --- */
+        const flameCanvas = document.getElementById('flameCanvas');
+        const fCtx = flameCanvas.getContext('2d');
+        flameCanvas.width = 192;
+        flameCanvas.height = 192;
+
+        let flameActive = true;
+        let windIntensity = 0; // Wind / Breath velocity factor (0 to 1)
+        let flameParticles = [];
+        let realisticSmoke = [];
+        let micStream = null;
+        let micAnalyser = null;
+        let micDataArray = null;
+
+        // Breath Audio Sound Synth
+        function playBreathPuffSound() {
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+                const bufferSize = ctx.sampleRate * 0.4;
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1; // White noise
+                }
+
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(300, now);
+                filter.frequency.linearRampToValueAtTime(150, now + 0.4);
+
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(ctx.destination);
+                noise.start(now);
+            } catch(e){}
+        }
+
+        // Render Procedural Realistic Flame Particles & Halo Glow
+        function renderFlameEngine() {
+            fCtx.clearRect(0, 0, 192, 192);
+
+            const centerX = 96;
+            const baseY = 150;
+
+            if (flameActive) {
+                // 1. Dynamic Outer Radial Light Halo Glow
+                const haloRadius = 45 + Math.random() * 6 - (windIntensity * 20);
+                const haloGrad = fCtx.createRadialGradient(centerX, baseY - 25, 2, centerX, baseY - 25, Math.max(haloRadius, 5));
+                haloGrad.addColorStop(0, 'rgba(255, 180, 50, 0.4)');
+                haloGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.15)');
+                haloGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                fCtx.fillStyle = haloGrad;
+                fCtx.beginPath();
+                fCtx.arc(centerX, baseY - 25, Math.max(haloRadius, 5), 0, Math.PI * 2);
+                fCtx.fill();
+
+                // 2. Generate Micro Flame Core Particles
+                const particleCount = Math.floor(6 - windIntensity * 3);
+                for (let i = 0; i < particleCount; i++) {
+                    flameParticles.push({
+                        x: centerX + (Math.random() - 0.5) * 4,
+                        y: baseY,
+                        vx: (Math.random() - 0.5) * 0.8 + (windIntensity * 4.5), // Lean sideways when blowing
+                        vy: -(Math.random() * 2.5 + 2) * (1 - windIntensity * 0.5),
+                        size: Math.random() * 12 + 10,
+                        life: 1.0,
+                        decay: Math.random() * 0.04 + 0.03
+                    });
+                }
+
+                // 3. Render Flame Core Particles
+                flameParticles.forEach((p, idx) => {
+                    p.x += p.vx + (Math.random() - 0.5) * 0.5;
+                    p.y += p.vy;
+                    p.life -= p.decay;
+                    p.size *= 0.94;
+
+                    if (p.life <= 0 || p.size <= 0.5) {
+                        flameParticles.splice(idx, 1);
+                        return;
+                    }
+
+                    fCtx.save();
+                    fCtx.beginPath();
+                    fCtx.arc(p.x, p.y, Math.max(p.size, 0.1), 0, Math.PI * 2);
+
+                    // Multi-layer Color Gradient (Hot Blue Base -> Amber Middle -> Yellow Aura)
+                    const pGrad = fCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
+                    if (p.life > 0.75) {
+                        pGrad.addColorStop(0, 'rgba(255, 255, 250, 0.95)');
+                        pGrad.addColorStop(0.4, 'rgba(255, 200, 50, 0.8)');
+                        pGrad.addColorStop(1, 'rgba(255, 100, 0, 0)');
+                    } else if (p.life > 0.35) {
+                        pGrad.addColorStop(0, 'rgba(255, 180, 40, 0.9)');
+                        pGrad.addColorStop(0.6, 'rgba(212, 140, 20, 0.5)');
+                        pGrad.addColorStop(1, 'rgba(180, 50, 0, 0)');
+                    } else {
+                        pGrad.addColorStop(0, 'rgba(100, 150, 255, 0.6)'); // Hot blue base rim
+                        pGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                    }
+
+                    fCtx.fillStyle = pGrad;
+                    fCtx.fill();
+                    fCtx.restore();
+                });
+
+                // Hot Blue Wick Base Dot
+                fCtx.fillStyle = 'rgba(80, 160, 255, 0.9)';
+                fCtx.beginPath();
+                fCtx.arc(centerX, baseY - 2, 3, 0, Math.PI * 2);
+                fCtx.fill();
+            }
+
+            // 4. Render Multi-Stage Volumetric Smoke Engine
+            realisticSmoke.forEach((s, idx) => {
+                s.x += s.vx + Math.sin(s.y * 0.05) * 0.6;
+                s.y += s.vy;
+                s.size += s.growth;
+                s.alpha -= s.decay;
+
+                if (s.alpha <= 0) {
+                    realisticSmoke.splice(idx, 1);
+                    return;
+                }
+
+                fCtx.save();
+                fCtx.beginPath();
+                fCtx.arc(s.x, s.y, Math.max(s.size, 0.1), 0, Math.PI * 2);
+
+                const sGrad = fCtx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.size);
+                sGrad.addColorStop(0, `rgba(220, 220, 230, ${s.alpha * 0.4})`);
+                sGrad.addColorStop(0.5, `rgba(160, 160, 180, ${s.alpha * 0.2})`);
+                sGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                fCtx.fillStyle = sGrad;
+                fCtx.fill();
+                fCtx.restore();
+            });
+
+            requestAnimationFrame(renderFlameEngine);
+        }
+        renderFlameEngine();
+
+        // Spawn Dense Volumetric Smoke Stream
+        function triggerVolumetricSmoke() {
+            const centerX = 96;
+            const baseY = 145;
+            for (let i = 0; i < 45; i++) {
+                realisticSmoke.push({
+                    x: centerX + (Math.random() - 0.5) * 6,
+                    y: baseY - Math.random() * 10,
+                    vx: (Math.random() - 0.5) * 1.2 + (windIntensity * 2),
+                    vy: -(Math.random() * 1.8 + 1.2),
+                    size: Math.random() * 4 + 3,
+                    growth: Math.random() * 0.25 + 0.12,
+                    alpha: Math.random() * 0.7 + 0.3,
+                    decay: Math.random() * 0.012 + 0.008
+                });
+            }
+        }
+
+        // Extinguish Flame Logic
+        function blowOutCandleFlame() {
+            if (!flameActive) return;
+            flameActive = false;
+            windIntensity = 0;
+
+            playBreathPuffSound();
+            triggerVolumetricSmoke();
+
+            playChime(659.25, 0);
+            playChime(880, 0.15);
+
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 90, spread: 75, origin: { y: 0.6 } });
+            }
+
+            setTimeout(() => {
+                const wishMsg = document.getElementById('wishMessage');
+                wishMsg.classList.remove('hidden');
+                setTimeout(() => {
+                    wishMsg.classList.remove('opacity-0');
+                    wishMsg.classList.add('opacity-100');
+                }, 50);
+            }, 600);
+        }
+
+        // Mic Stream & Blow Detection
+        const enableMicBtn = document.getElementById('enableMicBtn');
+        const micBtnText = document.getElementById('micBtnText');
+        const micMeterWrapper = document.getElementById('micMeterWrapper');
+        const micMeterFill = document.getElementById('micMeterFill');
+
+        enableMicBtn.addEventListener('click', async () => {
+            getAudioContext();
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                alert("Microphone input is not supported in this browser. Please use the 'Click To Blow' button!");
+                return;
+            }
+
+            try {
+                micStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+                const ctx = getAudioContext();
+                const source = ctx.createMediaStreamSource(micStream);
+                micAnalyser = ctx.createAnalyser();
+                micAnalyser.fftSize = 256;
+                source.connect(micAnalyser);
+                micDataArray = new Uint8Array(micAnalyser.frequencyBinCount);
+
+                micBtnText.innerText = "Mic Active • Blow Now! 🌬️";
+                enableMicBtn.classList.add('border-gold-400', 'shadow-gold-glow');
+                micMeterWrapper.classList.remove('hidden');
+
+                // Process Mic Audio Level in Loop
+                function processMicBlow() {
+                    if (!flameActive) return;
+
+                    micAnalyser.getByteFrequencyData(micDataArray);
+                    let sum = 0;
+                    for (let i = 0; i < micDataArray.length; i++) {
+                        sum += micDataArray[i];
+                    }
+                    const average = sum / micDataArray.length;
+                    const normalizedVolume = Math.min(average / 90, 1.0); // 0 to 1 scale
+
+                    micMeterFill.style.width = `${normalizedVolume * 100}%`;
+
+                    if (normalizedVolume > 0.15) {
+                        windIntensity = normalizedVolume; // Lean flame sideways dynamically
+                    } else {
+                        windIntensity *= 0.85; // Smooth recovery
+                    }
+
+                    // High breath threshold to trigger extinguish
+                    if (normalizedVolume > 0.65) {
+                        blowOutCandleFlame();
+                    } else {
+                        requestAnimationFrame(processMicBlow);
+                    }
+                }
+                processMicBlow();
+
+            } catch(err) {
+                console.error(err);
+                micBtnText.innerText = "Mic Access Denied (Use Click)";
+            }
+        });
+
+        // Click Fallback Triggers
+        document.getElementById('cakeWrapper').addEventListener('click', blowOutCandleFlame);
+        document.getElementById('blowCandleBtn').addEventListener('click', blowOutCandleFlame);
+
+        // Reignite Flame Handler
+        document.getElementById('reigniteBtn').addEventListener('click', () => {
+            flameActive = true;
+            windIntensity = 0;
+            document.getElementById('wishMessage').classList.add('opacity-0');
+            setTimeout(() => document.getElementById('wishMessage').classList.add('hidden'), 500);
+        });
+
+        /* --- 3D TILT TILE FLIP --- */
+        function flipCard(element) {
+            const inner = element.querySelector('.card-inner');
+            inner.classList.toggle('rotate-y-180');
+            playChime(700, 0);
+        }
+
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.transform = `rotateY(${(x - rect.width/2)/15}deg) rotateX(${-(y - rect.height/2)/15}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
